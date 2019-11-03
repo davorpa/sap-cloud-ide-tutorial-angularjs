@@ -28,8 +28,19 @@
 		}
 	];
 
-	function helloController($scope) {
-		$scope.productList = testData;
+	var odataUrl = "//services.odata.org/V3/Northwind/Northwind.svc/";
+
+	function helloController($scope, $http) {
+		$scope.productList = [];
+		
+		var promise = $http.get(odataUrl + "Products").then(
+			function onSuccess(response) {
+				$scope.productList = response.data.value;
+			},
+			function onError(error){
+				alert("An error occurred\n\n" + angular.toJson(error));
+			}
+		);
 		
 		$scope.selectedProduct = {};
 		$scope.selectProduct = function( product ) {

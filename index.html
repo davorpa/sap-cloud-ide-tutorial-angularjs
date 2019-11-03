@@ -139,10 +139,16 @@
 					<h4 class="modal-title">Product Detail - {{selectedProduct.ProductName}}</h4>
 				</div>
 				<div class="modal-body">
+					<p><strong>Product ID</strong>: {{selectedProduct.ProductID}}</p>
 					<p><strong>Product Name</strong>: {{selectedProduct.ProductName}}</p>
 					<p><strong>Quantity Per Unit</strong>: {{selectedProduct.QuantityPerUnit}}</p>
 					<p><strong>Unit Price</strong>: {{selectedProduct.UnitPrice | number:2}} <small class="text-muted">{{selectedProduct.currency || 'EUR'}}</small></p>
 					<p><strong>Status</strong>: <span ng-class="{'available' : product.Discontinued == false, 'discontinued' : product.Discontinued != false}">{{selectedProduct.Discontinued == true ? "Discontinued":"Available" }}</span></p>
+					<p><strong>Category</strong>: {{selectedProduct.CategoryID}}</p>
+					<p><strong>Reorder Level</strong>: {{selectedProduct.ReorderLevel}}</p>
+					<p><strong>Supplier</strong>: {{selectedProduct.SupplierID}}</p>
+					<p><strong>Units In Stock</strong>: {{selectedProduct.UnitsInStock}}</p>
+					<p><strong>Units On Order</strong>: {{selectedProduct.UnitsOnOrder}}</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
