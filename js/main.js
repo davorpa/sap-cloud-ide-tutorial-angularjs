@@ -28,8 +28,14 @@
 		}
 	];
 
-	function helloController($scope, $http) {
+	function helloController($scope) {
 		$scope.productList = testData;
+		
+		$scope.selectedProduct = {};
+		$scope.selectProduct = function( product ) {
+			$scope.selectedProduct = product;
+			$('#product-detail').modal("show");
+		};
 	}
 
 

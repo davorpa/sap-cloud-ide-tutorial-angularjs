@@ -68,7 +68,8 @@
 			</div>
 		</div>
 	</nav> <!-- /.navbar -->
-	
+
+
 	<div role="main" class="main container-fluid">
 		<!-- Example of page header -->
 		<div class="page-header">
@@ -87,14 +88,14 @@
 			</div>
 		</h2>
 		<div class="list-group">
-			<button type="button" class="list-group-item" ng-repeat="product in productList" ng-click="selectProduct(product)">
+			<button type="button" class="list-group-item" ng-click="selectProduct(product)" ng-repeat="product in productList">
 				<div class="row vertical-align">
 					<div class="col-sm-8 top">
 						<h4>{{product.ProductName}}</h4>
 						<p>{{product.QuantityPerUnit}}</p>
 					</div>
 					<div class="col-sm-3 text-right top">
-						<h4>{{product.UnitPrice | number:2}} <small class="text-muted">EUR</small></h4>
+						<h4>{{product.UnitPrice | number:2}} <small class="text-muted">{{selectedProduct.currency || 'EUR'}}</small></h4>
 						<p ng-class="{'available' : product.Discontinued == false, 'discontinued' : product.Discontinued != false}">{{product.Discontinued == false ? "Available" : "Discontinued"}}</p>
 					</div>
 					<div class="col-sm-1 center">
@@ -126,7 +127,28 @@
 			</div>
 		</div>
 	</div> <!-- /.main -->
-	
+
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="product-detail">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Product Detail - {{selectedProduct.ProductName}}</h4>
+				</div>
+				<div class="modal-body">
+					<p><strong>Product Name</strong>: {{selectedProduct.ProductName}}</p>
+					<p><strong>Quantity Per Unit</strong>: {{selectedProduct.QuantityPerUnit}}</p>
+					<p><strong>Unit Price</strong>: {{selectedProduct.UnitPrice | number:2}} <small class="text-muted">{{selectedProduct.currency || 'EUR'}}</small></p>
+					<p><strong>Status</strong>: <span ng-class="{'available' : product.Discontinued == false, 'discontinued' : product.Discontinued != false}">{{selectedProduct.Discontinued == true ? "Discontinued":"Available" }}</span></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
 	<footer class="footer">
 		<div class="container">
 			<p class="text-center text-muted">&copy; 2019 Company, Inc.</p>
