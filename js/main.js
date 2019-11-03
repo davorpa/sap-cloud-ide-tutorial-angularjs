@@ -28,7 +28,7 @@
 		}
 	];
 
-	var odataUrl = "//services.odata.org/V3/Northwind/Northwind.svc/";
+	var odataUrl = "/Northwind/V3/Northwind/Northwind.svc/";
 
 	function helloController($scope, $http) {
 		$scope.productList = [];
