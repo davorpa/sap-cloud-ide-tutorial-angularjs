@@ -139,48 +139,52 @@
 					<h4 class="modal-title">Product Detail - {{selectedProduct.ProductName}}</h4>
 				</div>
 				<div class="modal-body">
-					<div class="row">
-						<p>
-							<span class="col-sm-3"><strong>Product ID</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.ProductID}}</span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Product Name</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.ProductName}}</span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Quantity Per Unit</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.QuantityPerUnit}}</span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Unit Price</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.UnitPrice | number:2}} <small class="text-muted">{{selectedProduct.currency || 'EUR'}}</small></span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Status</strong>: </span>
-							<span class="col-sm-9" ng-class="{'available' : product.Discontinued == false, 'discontinued' : product.Discontinued != false}">{{selectedProduct.Discontinued == true ? "Discontinued":"Available" }}</span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Category</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.CategoryID}}</span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Reorder Level</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.ReorderLevel}}</span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Supplier</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.SupplierID}}</span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Units In Stock</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.UnitsInStock}}</span>
-						</p>
-						<p>
-							<span class="col-sm-3"><strong>Units On Order</strong>: </span>
-							<span class="col-sm-9">{{selectedProduct.UnitsOnOrder}}</span>
-						</p>
-					</div>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Product ID</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.ProductID}}</p>
+							</div>
+							<label class="col-sm-3 control-label">Product Name</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.ProductName}}</p>
+							</div>
+							<label class="col-sm-3 control-label">Quantity Per Unit</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.QuantityPerUnit}}</p>
+							</div>
+							<label class="col-sm-3 control-label">Unit Price</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.UnitPrice | number:2}} <small class="text-muted">{{selectedProduct.currency || 'EUR'}}</small></p>
+							</div>
+							<label class="col-sm-3 control-label">Status</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" ng-class="{'available' : selectedProduct.Discontinued == false, 'discontinued' : selectedProduct.Discontinued != false}">
+									{{selectedProduct.Discontinued == false ? "Available" : "Discontinued"}}
+								</p>
+							</div>
+							<label class="col-sm-3 control-label">Category</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.CategoryID}}</p>
+							</div>
+							<label class="col-sm-3 control-label">Reorder Level</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.ReorderLevel}}</p>
+							</div>
+							<label class="col-sm-3 control-label">Supplier</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.SupplierID}}</p>
+							</div>
+							<label class="col-sm-3 control-label">Units In Stock</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.UnitsInStock}}</p>
+							</div>
+							<label class="col-sm-3 control-label">Units On Order</label>
+							<div class="col-sm-9">
+								<p class="form-control-static">{{selectedProduct.UnitsOnOrder}}</p>
+							</div>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
