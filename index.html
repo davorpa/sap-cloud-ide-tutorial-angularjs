@@ -113,8 +113,8 @@
 							<p>{{product.QuantityPerUnit}}</p>
 						</div>
 						<div class="col-sm-3 text-right top">
-							<h4>{{product.UnitPrice | number:2}} <small class="text-muted">{{selectedProduct.currency || 'EUR'}}</small></h4>
-							<p ng-class="{'available' : product.Discontinued == false, 'discontinued' : product.Discontinued != false}">{{product.Discontinued == false ? "Available" : "Discontinued"}}</p>
+							<h4>{{product.UnitPrice | number:2}} <small class="text-muted">{{product.currency || 'EUR'}}</small></h4>
+							<p class="{{product.Discontinued | discontinued:'css'}}">{{product.Discontinued | discontinued}}</p>
 						</div>
 						<div class="col-sm-1 center">
 							<span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
@@ -176,9 +176,7 @@
 							</div>
 							<label class="col-sm-3 control-label">Status</label>
 							<div class="col-sm-9">
-								<p class="form-control-static" ng-class="{'available' : selectedProduct.Discontinued == false, 'discontinued' : selectedProduct.Discontinued != false}">
-									{{selectedProduct.Discontinued == false ? "Available" : "Discontinued"}}
-								</p>
+								<p class="form-control-static {{selectedProduct.Discontinued | discontinued:'css'}}">{{selectedProduct.Discontinued | discontinued}}</p>
 							</div>
 							<label class="col-sm-3 control-label">Category</label>
 							<div class="col-sm-9">

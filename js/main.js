@@ -77,9 +77,18 @@
 		};
 	}
 
+	function discontinuedFilter() {
+		return function(input, mode) {
+			if (mode == "css") {
+				return input ? "discontinued" : "available";	
+			}
+			return input ? "Discontinued" : "Available";
+		};
+	}
 
 	angular
 		.module("helloWorld",[])
-		.controller('helloController', helloController);
+		.controller('helloController', helloController)
+		.filter('discontinued', discontinuedFilter);
 
 })(jQuery, angular);
