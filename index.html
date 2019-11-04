@@ -62,7 +62,7 @@
 					<li><a href="#">Profile</a></li>
 					<li><a href="#">Help</a></li>
 				</ul>
-				<form class="navbar-form navbar-right">
+				<form class="navbar-form navbar-right" role="search">
 					<input type="text" class="form-control" placeholder="Search...">
 				</form>
 			</div>
@@ -96,29 +96,32 @@
 			<p><a class="btn btn-primary btn-lg" href="https://developers.sap.com/group.cp-frontend-angular-1.html" role="button">Learn more &raquo;</a></p>
 		</div>
 		
-		
-		<h2 class="sub-header">
-			Products
-			<div class="pull-right">
-				<span class="badge badge-pill badge-dark">Items: {{productList.length}}</span>
-			</div>
-		</h2>
-		<div class="list-group">
-			<button type="button" class="list-group-item" ng-click="selectProduct(product)" ng-repeat="product in productList">
-				<div class="row vertical-align">
-					<div class="col-sm-8 top">
-						<h4>{{product.ProductName}}</h4>
-						<p>{{product.QuantityPerUnit}}</p>
-					</div>
-					<div class="col-sm-3 text-right top">
-						<h4>{{product.UnitPrice | number:2}} <small class="text-muted">{{selectedProduct.currency || 'EUR'}}</small></h4>
-						<p ng-class="{'available' : product.Discontinued == false, 'discontinued' : product.Discontinued != false}">{{product.Discontinued == false ? "Available" : "Discontinued"}}</p>
-					</div>
-					<div class="col-sm-1 center">
-						<span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
-					</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Products Overview</h2>
+				<div class="panel-search form-group">
+					<input type="text" class="form-control" placeholder="Filter" ng-model="productFilter">
 				</div>
-			</button>
+				<span class="label label-primary" ng-if="!!!productFilter">Items: {{productList.length}}</span>
+				<span class="label label-info" ng-if="!!productFilter">Items (filtered): {{productFilterCount()}} / {{productList.length}}</span>
+			</div>
+			<div class="list-group">
+				<button type="button" class="list-group-item" ng-click="selectProduct(product)" ng-repeat="product in productList | filter:productFilter">
+					<div class="row vertical-align">
+						<div class="col-sm-8 top">
+							<h4>{{product.ProductName}}</h4>
+							<p>{{product.QuantityPerUnit}}</p>
+						</div>
+						<div class="col-sm-3 text-right top">
+							<h4>{{product.UnitPrice | number:2}} <small class="text-muted">{{selectedProduct.currency || 'EUR'}}</small></h4>
+							<p ng-class="{'available' : product.Discontinued == false, 'discontinued' : product.Discontinued != false}">{{product.Discontinued == false ? "Available" : "Discontinued"}}</p>
+						</div>
+						<div class="col-sm-1 center">
+							<span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
+						</div>
+					</div>
+				</button>
+			</div>
 		</div>
 		
 		

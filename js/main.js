@@ -30,11 +30,17 @@
 
 	var odataUrl = "/Northwind/V3/Northwind/Northwind.svc/";
 
-	function helloController($scope, $http, $timeout) {
+	function helloController($scope, $http, $timeout, $filter) {
 		$scope.productList = [];
 		
 		$scope.orderAmount = "";
 		$scope.orderAlert = "";
+		
+		$scope.productFilter = undefined;
+		$scope.productFilterCount = function() {
+			var	count = $filter('filter')($scope.productList, $scope.productFilter).length;
+			return count;
+		};
 		
 		var promise = $http.get(odataUrl + "Products").then(
 			function onSuccess(response) {

@@ -41,6 +41,29 @@ body {
 }
 
 /*
+ * semantic panel headings
+-------------------------------------------------- */
+.panel-heading .panel-title {
+    font-weight: 700;
+    display: inline-block;
+}
+.panel-heading .label {
+    font-size: 90%;
+    display: inline-block;
+    float: right;
+}
+.panel-heading .panel-search {
+    display: inline-block;
+    float: right;
+    margin: -7px 0 0;
+}
+.panel-heading .label + .panel-search,
+.panel-heading .panel-search + .label {
+	margin-right: 16px;
+}
+
+
+/*
  * Base structure
 -------------------------------------------------- */
 
@@ -93,16 +116,6 @@ code {
 	font-size: 80%;
 }
 
-
-.sub-header .badge {
-    padding: .25em .4em;
-    font-size: 55%;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .35rem;
-}
 
 
 .bd-placeholder-img {
