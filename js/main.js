@@ -30,8 +30,11 @@
 
 	var odataUrl = "/Northwind/V3/Northwind/Northwind.svc/";
 
-	function helloController($scope, $http) {
+	function helloController($scope, $http, $timeout) {
 		$scope.productList = [];
+		
+		$scope.orderAmount = "";
+		$scope.orderAlert = "";
 		
 		var promise = $http.get(odataUrl + "Products").then(
 			function onSuccess(response) {
@@ -45,7 +48,26 @@
 		$scope.selectedProduct = {};
 		$scope.selectProduct = function( product ) {
 			$scope.selectedProduct = product;
+			$scope.orderAmount = "";
+			$scope.orderAlert = false;
 			$('#product-detail').modal("show");
+		};
+		
+		$scope.orderItem = function() {
+			$scope.orderAlert = {
+				type: 'success',
+				message: $scope.orderAmount + " units of " + $scope.selectedProduct.ProductName + " have been ordered."
+			};
+			
+			$('#product-detail').modal("hide");
+			$('#order-alert-box').slideDown("slow");
+			$timeout(function(){
+				$('#order-alert-box').slideUp("slow", function(){
+					$timeout(function(){
+						$scope.orderAlert = false;
+					});
+				});
+			}, 4000);
 		};
 	}
 

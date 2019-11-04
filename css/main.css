@@ -18,8 +18,31 @@ body {
 }
 
 /*
+ * bsalerts as fixed toast
+-------------------------------------------------- */
+.aftoast {
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1040;
+	margin: 0;
+}
+.aftoast-top {
+	top: 0;
+}
+.aftoast-bottom {
+	bottom: 0;
+}
+.navbar-fixed-top ~ .aftoast-top {
+	top: 52px;
+}
+.navbar.navbar-fixed-bottom ~ .aftoast-bottom {
+	bottom: 52px;
+}
+
+/*
  * Base structure
- */
+-------------------------------------------------- */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
@@ -38,7 +61,6 @@ body {
 .vertical-align .center {
 	align-self: center;
 }
-
 
 
 
